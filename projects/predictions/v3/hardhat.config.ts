@@ -19,8 +19,41 @@ const bscMainnet: NetworkUserConfig = {
   accounts: [process.env.KEY_MAINNET!],
 };
 
+const nexichain: NetworkUserConfig = {
+  url: "https://rpc.chainv1.nexi.technology",
+  chainId: 4242,
+  accounts: [process.env.KEY_NEXI!],
+};
+
+const plgchain: NetworkUserConfig = {
+  url: "https://rpcurl.mainnet.plgchain.com",
+  chainId: 242,
+  accounts: [process.env.KEY_PLINGA!],
+};
+
 const config = {
   defaultNetwork: "hardhat",
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY,
+    customChains: [
+      {
+        network: "plgchain",
+        chainId: 242,
+        urls: {
+          apiURL: "http://185.128.137.241:4000/api",
+          browserURL: "http://185.128.137.241:4000",
+        },
+      },
+      {
+        network: "nexichain",
+        chainId: 4242,
+        urls: {
+          apiURL: "http://185.173.129.242:4000/api",
+          browserURL: "http://185.173.129.242:4000",
+        },
+      },
+    ]
+  },
   networks: {
     hardhat: {},
     // testnet: bscTestnet,
